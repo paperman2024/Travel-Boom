@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (page === 'home')    initSearch();
     if (page === 'about')   loadEmployees();
-    if (page === 'search')  handleSearch();
+    if (page === 'search')   handleSearch();
 });
 
 // ── Employee cards ──
@@ -105,6 +105,8 @@ async function handleSearch() {
     const data = await res.json();
     const results = getResults(data, normalizeInput(query));
     renderResults(results, normalizeInput(query));
+
+    initSearch()
 }
 
 // ── Wire up search button & Enter key ──
