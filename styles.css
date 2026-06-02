@@ -119,13 +119,8 @@ section {
     left: 0;
     width: 100%;
     height: calc(100dvh - 60px);
-    display: none;
     overflow-y: auto;
     padding: 40px 40px 40px 100px;
-}
-
-section.active {
-    display: block;
 }
 
 /* ── Background Image ── */
@@ -196,13 +191,8 @@ section.active {
 
 /* ── About Us Section ── */
 #about-us {
-    display: none;
     flex-direction: column;
     gap: 40px;
-}
-
-#about-us.active {
-    display: flex;
 }
 
 #company-info h2 {
@@ -251,13 +241,8 @@ section.active {
 
 /* ── Contact Section ── */
 #contact-us {
-    display: none;
     flex-direction: column;
     gap: 32px;
-}
-
-#contact-us.active {
-    display: flex;
 }
 
 #contact-info h2 {
@@ -375,13 +360,8 @@ section.active {
 
 /* ── Search Results ── */
 #search {
-    display: none;
     flex-direction: column;
     gap: 24px;
-}
-
-#search.active {
-    display: flex;
 }
 
 #search h2 {

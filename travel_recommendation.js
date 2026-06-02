@@ -1,23 +1,10 @@
-const links = document.querySelectorAll('#navbar ul li a');
-const sections = document.querySelectorAll('section');
-const searchbar = document.querySelector('.searchbar');
+document.addEventListener('DOMContentLoaded', () => {
+    const page = document.body.dataset.page;
 
-links.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = link.getAttribute('href').replace('#', '');
-
-        sections.forEach(s => s.classList.remove('active'));
-        links.forEach(l => l.classList.remove('active'));
-
-        document.getElementById(target).classList.add('active');
-        link.classList.add('active');
-
-        searchbar.classList.toggle('hidden', target !== 'home');
-    });
+    if (page === 'home')    initSearch();
+    if (page === 'about')   loadEmployees();
+    if (page === 'search')  handleSearch();
 });
-
-document.querySelector('a[href="#home"]').click();
 
 // ── Employee cards ──
 async function loadEmployees() {
@@ -42,8 +29,6 @@ async function loadEmployees() {
         list.appendChild(li);
     });
 }
-
-loadEmployees();
 
 async function loadDestinations() {
     const res = await fetch('travel_recommendation_api.json');
@@ -110,18 +95,16 @@ function renderResults(results, query) {
 }
 
 async function handleSearch() {
-    const input = document.querySelector('.searchbar input');
-    const query = normalizeInput(input.value);
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q');
     if (!query) return;
 
-    const data = await loadDestinations();
-    const results = getResults(data, query);
+    document.querySelector('.searchbar input').value = query;
 
-    renderResults(results, query);
-
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('#navbar ul li a').forEach(l => l.classList.remove('active'));
-    document.getElementById('search').classList.add('active');
+    const res = await fetch('travel_recommendation_api.json');
+    const data = await res.json();
+    const results = getResults(data, normalizeInput(query));
+    renderResults(results, normalizeInput(query));
 }
 
 // ── Wire up search button & Enter key ──
@@ -130,10 +113,13 @@ function initSearch() {
     const clearBtn = document.getElementById('search-clear');
     const input = document.getElementById('search-input');
 
-    searchBtn.addEventListener('click', handleSearch);
+    searchBtn.addEventListener('click', () => {
+        const query = input.value.trim();
+        if (query) window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+    });
 
     input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') handleSearch();
+        if (e.key === 'Enter') searchBtn.click();
     });
 
     clearBtn.addEventListener('click', () => {
@@ -141,5 +127,3 @@ function initSearch() {
         document.getElementById('search-results').innerHTML = '';
     });
 }
-
-initSearch();
