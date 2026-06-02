@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Sarah Müller",
+        "role": "CEO & Founder",
+        "description": "Sarah has 15 years of experience in the travel industry and founded Travel Boom in 2018.",
+        "icon": "✈️"
+    },
+    {
+        "name": "Jonas Weber",
+        "role": "Head of Marketing",
+        "description": "Jonas drives our brand strategy and makes sure the world knows about Travel Boom.",
+        "icon": "📣"
+    },
+    {
+        "name": "Lena Koch",
+        "role": "Lead Developer",
+        "description": "Lena builds and maintains everything you see — and a lot you don't.",
+        "icon": "💻"
+    }
+]

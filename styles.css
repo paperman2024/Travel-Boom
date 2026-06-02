@@ -1,0 +1,448 @@
+/* ── Reset & Base ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* ── Navbar ── */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #0D1B2A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 100;
+}
+
+#navbar h1 {
+    color: #FF8800;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+#navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#navbar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+#navbar ul li a:hover,
+#navbar ul li a.active {
+    color: #FF8800;
+    border-bottom-color: #FF8800;
+}
+
+/* -- Icons -- */
+#logo-s {
+    max-height: 56px;
+    width: auto;
+    height: auto;
+}
+
+.navbar-logo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* ── Searchbar (only visible on home) ── */
+.searchbar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    transition: opacity 0.2s;
+}
+
+.searchbar.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchbar input {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    width: 220px;
+    background-color: #1e2f42;
+    color: #ffffff;
+    outline: none;
+}
+
+.searchbar input::placeholder {
+    color: #8899aa;
+}
+
+.searchbar button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #FF8800;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+
+.searchbar button:hover {
+    background-color: #e07000;
+}
+
+/* ── Section Layout ── */
+section {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100dvh - 60px);
+    display: none;
+    overflow-y: auto;
+    padding: 40px 40px 40px 100px;
+}
+
+section.active {
+    display: block;
+}
+
+/* ── Background Image ── */
+#background-img {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100dvh - 60px);
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* ── Social Media ── */
+#social-media {
+    position: fixed;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+}
+
+#social-media ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#social-media ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 30px;
+    background-color: rgba(13, 27, 42, 0.7);
+    padding: 8px;
+    border-radius: 6px;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+#social-media ul li a:hover {
+    background-color: #FF8800;
+}
+
+/* ── Home Section ── */
+#home {
+    color: #ffffff;
+}
+
+#home-text {
+    max-width: 600px;
+    margin-top: 80px;
+}
+
+#home-text h2 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    color: black;
+}
+
+#home-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: black;
+}
+
+/* ── About Us Section ── */
+#about-us {
+    display: none;
+    flex-direction: column;
+    gap: 40px;
+}
+
+#about-us.active {
+    display: flex;
+}
+
+#company-info h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0D1B2A;
+    margin-bottom: 12px;
+}
+
+#company-info p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.7;
+    max-width: 700px;
+}
+
+#company-employees h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0D1B2A;
+    margin-bottom: 16px;
+}
+
+#employee-list {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#employee-list li button {
+    padding: 10px 20px;
+    border: 2px solid #0D1B2A;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0D1B2A;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#employee-list li button:hover {
+    background-color: #0D1B2A;
+    color: #ffffff;
+}
+
+/* ── Contact Section ── */
+#contact-us {
+    display: none;
+    flex-direction: column;
+    gap: 32px;
+}
+
+#contact-us.active {
+    display: flex;
+}
+
+#contact-info h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0D1B2A;
+    margin-bottom: 8px;
+}
+
+#contact-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+#contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 500px;
+}
+
+#contact-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0D1B2A;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    padding: 10px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #FF8800;
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form button[type="submit"] {
+    align-self: flex-start;
+    padding: 10px 28px;
+    background-color: #FF8800;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#contact-form button[type="submit"]:hover {
+    background-color: #e07000;
+}
+
+/* ── Employee Cards ── */
+#employee-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+}
+
+.employee-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+}
+
+.employee-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+}
+
+.employee-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.employee-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0D1B2A;
+}
+
+.employee-role {
+    font-size: 13px;
+    font-weight: 600;
+    color: #FF8800;
+}
+
+.employee-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 4px;
+}
+
+/* ── Search Results ── */
+#search {
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#search.active {
+    display: flex;
+}
+
+#search h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0D1B2A;
+}
+
+.no-results {
+    font-size: 15px;
+    color: black;
+}
+
+#search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.destination-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+}
+
+.destination-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0D1B2A;
+    margin-bottom: 4px;
+}
+
+.destination-country {
+    font-size: 13px;
+    font-weight: 600;
+    color: #FF8800;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.destination-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.destination-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.destination-card img {
+    width: calc(100% + 40px);
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 12px -20px;
+}
